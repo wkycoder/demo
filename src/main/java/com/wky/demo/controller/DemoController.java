@@ -26,7 +26,7 @@ import java.io.InputStream;
  * @author: wangkunyang
  * @date 2021/08/27 09:30
  */
-@Api(value = "接口列表")
+@Api(value = "接口列表", tags = {"接口列表"})
 @RestController
 @RequestMapping("/demo")
 public class DemoController {
