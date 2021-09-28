@@ -24,4 +24,18 @@ public interface TransferService {
      */
     void add(String username, BigDecimal amount);
 
+    /**
+     * 测试事务提交后进行一些操作
+     */
+    void testCommitted();
+
+    /**
+     * 测试事务失效
+     */
+    void testTxInvalid();
+
+    /**
+     * 捕获异常
+     */
+    void catchException();
 }

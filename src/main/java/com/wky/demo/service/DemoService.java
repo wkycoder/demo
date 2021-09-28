@@ -15,4 +15,31 @@ public interface DemoService {
      * @param list
      */
     void processData(List<ExcelVO> list);
+
+    /**
+     * 抢红包
+     * @param redId
+     */
+    Integer grabRed(Integer redId) throws InterruptedException;
+
+    /**
+     * 测试requires_new
+     */
+    void testRN();
+
+    /**
+     * 测试手动捕获异常
+     */
+    void testNT();
+
+    /**
+     * methodA
+     */
+    void methodA();
+
+    /**
+     * methodB
+     */
+    void methodB();
+
 }

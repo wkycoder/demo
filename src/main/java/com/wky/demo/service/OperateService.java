@@ -1,5 +1,8 @@
 package com.wky.demo.service;
 
+import com.wky.demo.model.entity.AccountEntity;
+import com.wky.demo.model.entity.SendRecordEntity;
+
 import java.math.BigDecimal;
 
 /**
@@ -22,4 +25,16 @@ public interface OperateService {
      * @param amount
      */
     void add(String username, BigDecimal amount);
+
+    /**
+     * 测试事务提交后再次提交事务
+     * @param accountEntity
+     */
+    void testCommitted(AccountEntity accountEntity);
+
+    /**
+     * 发送消息
+     * @param sendRecordEntity
+     */
+    void send(SendRecordEntity sendRecordEntity);
 }
