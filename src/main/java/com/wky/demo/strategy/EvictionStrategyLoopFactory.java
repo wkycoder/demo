@@ -9,7 +9,8 @@ import java.util.List;
  *
  * @author: wangkunyang
  * @date 2021/10/19 11:48
- * 循环获取, 减少类的改动
+ * 循环获取, 减少类的改动, 反射
+ * 循环去判断使用哪一种策略
  */
 public class EvictionStrategyLoopFactory {
 

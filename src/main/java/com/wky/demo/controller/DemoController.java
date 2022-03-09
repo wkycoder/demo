@@ -24,6 +24,7 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
 /**
+ * red packet  红包
  * 命名查询和自定义查询
  * @author: wangkunyang
  * @date 2021/08/27 09:30

@@ -102,7 +102,7 @@ public class OperateServiceImpl implements OperateService {
             // 给用户发消息
             sendMsg(sendRecordEntity.getReceiver(), sendRecordEntity.getContent());
             sendRecordEntity.setStatus(1);
-            int i = 1/0;
+//            int i = 1/0;
             // 修改账户金额
         } catch (Exception e) {
             log.error("发生异常", e);
@@ -112,8 +112,8 @@ public class OperateServiceImpl implements OperateService {
 //            throw new GlobalRuntimeException(500, e.getMessage());
         } finally {
             // 更新发送记录
-//            sendRecordRepository.save(sendRecordEntity);
-            sendRecordService.updateSendRecord(sendRecordEntity);
+            sendRecordRepository.save(sendRecordEntity);
+//            sendRecordService.updateSendRecord(sendRecordEntity);
         }
     }
 

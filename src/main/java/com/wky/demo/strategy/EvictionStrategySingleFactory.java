@@ -10,6 +10,7 @@ import java.util.Map;
 
 /**
  * EvictionStrategySingleFactory.getEvictionStrategy
+ * 获取到的是单例的策略模式，且使用Map去维护策略对象
  * @author: wangkunyang
  * @date 2021/10/19 11:39
  */
@@ -24,6 +25,8 @@ public class EvictionStrategySingleFactory implements ApplicationContextAware {
 
     static {
         // 可以静态导入枚举
+        // 使用Map去维护映射关系有一个缺点，就是当我们新增一个策略的时候需要修改代码，违反了开闭原则
+        // 因此我们可以使用List去维护映射关系
         evictionStrategyMap.put(EvictionType.LRU, new LfuEvictionStrategy());
         evictionStrategyMap.put(EvictionType.LFU, new LfuEvictionStrategy());
         evictionStrategyMap.put(EvictionType.FIFO, new LfuEvictionStrategy());

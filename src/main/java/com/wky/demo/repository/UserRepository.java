@@ -21,6 +21,6 @@ public interface UserRepository extends JpaRepository<UserEntity, Integer> {
      */
     @Modifying
     @Transactional(rollbackFor = Exception.class)
-    @Query("update UserEntity u set u.deleted = ?1 where id = ?2")
+    @Query("update UserEntity u set u.deleted = ?1 where u.id = ?2")
     void updateDeletedById(Integer deleted, Integer userId);
 }

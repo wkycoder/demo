@@ -9,12 +9,11 @@ import org.springframework.web.client.RestTemplate;
  * @date 2021/08/27 11:09
  */
 @Configuration
-public class WebConfig {
+public class RestTemplateConfig {
 
     @Bean
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
-
 
 }
