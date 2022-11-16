@@ -1,5 +1,6 @@
 package com.wky.demo.service.impl;
 
+import com.wky.demo.model.entity.RedEntity;
 import com.wky.demo.model.vo.ExcelVO;
 import com.wky.demo.repository.RedRepository;
 import com.wky.demo.service.DemoService;
@@ -127,6 +128,14 @@ public class DemoServiceImpl implements DemoService {
     public void methodB() {
         log.info("methodB is invoked...");
         log.info("methodB transaction name：{}", TransactionSynchronizationManager.getCurrentTransactionName());
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void testCache() {
+        RedEntity redEntity = redRepository.findById(1).orElse(null);
+        redEntity.setRemainingAmount(100);
+
     }
 
 

@@ -17,7 +17,6 @@ import org.springframework.transaction.support.TransactionSynchronization;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 /**
  * @author: wangkunyang
@@ -107,9 +106,9 @@ public class TransferServiceImpl implements TransferService {
         SendRecordEntity sendRecordEntity = new SendRecordEntity();
         sendRecordEntity.setReceiver(accountEntity.getUsername());
         sendRecordEntity.setContent("账号创建成功");
-        sendRecordEntity.setCreatedAt(LocalDateTime.now());
-        sendRecordEntity.setUpdatedAt(LocalDateTime.now());
-        sendRecordRepository.save(sendRecordEntity);
+//        sendRecordEntity.setCreatedAt(LocalDateTime.now());
+//        sendRecordEntity.setUpdatedAt(LocalDateTime.now());
+//        sendRecordRepository.save(sendRecordEntity);
         String currentTransactionName = TransactionSynchronizationManager.getCurrentTransactionName();
         log.info("当前事务名：{}", currentTransactionName);
         // 当前方法必须要有事务，否则会抛出Transaction synchronization is not active

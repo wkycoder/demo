@@ -22,6 +22,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * red packet  红包
@@ -114,6 +115,14 @@ public class DemoController {
     @GetMapping("/test/callOther")
     public Result callOtherMethod() {
         demoService.methodA();
+        return Result.ok("测试成功", null);
+    }
+
+
+    @ApiOperation(value = "test post")
+    @PostMapping("/test/post")
+    public Result testPost(@RequestBody List<Integer> ids) {
+        System.out.println(ids);
         return Result.ok("测试成功", null);
     }
 

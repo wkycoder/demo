@@ -42,4 +42,9 @@ public interface DemoService {
      */
     void methodB();
 
+    /**
+     * 测试缓存
+     */
+    void testCache();
+
 }

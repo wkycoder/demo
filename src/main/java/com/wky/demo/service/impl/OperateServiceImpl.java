@@ -112,8 +112,8 @@ public class OperateServiceImpl implements OperateService {
 //            throw new GlobalRuntimeException(500, e.getMessage());
         } finally {
             // 更新发送记录
-            sendRecordRepository.save(sendRecordEntity);
-//            sendRecordService.updateSendRecord(sendRecordEntity);
+//            sendRecordRepository.save(sendRecordEntity);
+            sendRecordService.updateSendRecord(sendRecordEntity);
         }
     }
 
