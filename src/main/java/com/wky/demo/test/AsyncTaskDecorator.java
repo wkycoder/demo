@@ -7,7 +7,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 /**
  * @author User
  */
-public class AsyncTaskContextDecorator implements TaskDecorator {
+public class AsyncTaskDecorator implements TaskDecorator {
 
     @Override
     public Runnable decorate(Runnable runnable) {
