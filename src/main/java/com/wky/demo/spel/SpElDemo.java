@@ -3,6 +3,7 @@ package com.wky.demo.spel;
 import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.common.TemplateParserContext;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,8 +23,10 @@ public class SpElDemo {
         // 创建表达式解析器
         ExpressionParser parser = new SpelExpressionParser();
 
-//        String expression = "1 + 2";
-//        String value1 = parser.parseExpression(expression).getValue(String.class);
+        String expression = "#{[gmv]} + 2";
+//        Map<String, Object> dd = new HashMap<>(8);
+//        dd.put("gmv", 33);
+//        String value1 = parser.parseExpression(expression, new TemplateParserContext()).getValue(dd, String.class);
 //        System.out.println(value1);
 
         // 使用TemplateParserContext, 支持根据模板解析, 只会对#{}中的内容进行解析
@@ -46,8 +49,10 @@ public class SpElDemo {
         // Spring提供的上下文  评估上下文
 //        EvaluationContext evaluationContext = new StandardEvaluationContext();
 //        evaluationContext.setVariable("id", 1);
-//        String value3 = parser.parseExpression("#id").getValue(evaluationContext, String.class);
-//        System.out.println(value3);
+        Map<String, Object> evaluationContext = new HashMap<>(8);
+        root.put("id", 1);
+        String value3 = parser.parseExpression("#id + 1").getValue(evaluationContext, String.class);
+        System.out.println(value3);
 
     }
 
