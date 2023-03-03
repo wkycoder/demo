@@ -1,8 +1,10 @@
 package com.wky.demo.spel;
 
+import org.springframework.expression.EvaluationContext;
 import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.common.TemplateParserContext;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
+import org.springframework.expression.spel.support.StandardEvaluationContext;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,10 +25,8 @@ public class SpElDemo {
         // 创建表达式解析器
         ExpressionParser parser = new SpelExpressionParser();
 
-        String expression = "#{[gmv]} + 2";
-//        Map<String, Object> dd = new HashMap<>(8);
-//        dd.put("gmv", 33);
-//        String value1 = parser.parseExpression(expression, new TemplateParserContext()).getValue(dd, String.class);
+//        String expression = "1 + 2";
+//        String value1 = parser.parseExpression(expression).getValue(String.class);
 //        System.out.println(value1);
 
         // 使用TemplateParserContext, 支持根据模板解析, 只会对#{}中的内容进行解析
@@ -46,13 +46,18 @@ public class SpElDemo {
         String value2 = parser.parseExpression(template, templateParserContext).getValue(root, String.class);
         System.out.println(value2);
 
-        // Spring提供的上下文  评估上下文
-//        EvaluationContext evaluationContext = new StandardEvaluationContext();
-//        evaluationContext.setVariable("id", 1);
-        Map<String, Object> evaluationContext = new HashMap<>(8);
-        root.put("id", 1);
-        String value3 = parser.parseExpression("#id + 1").getValue(evaluationContext, String.class);
+        // Spring提供的上下文  评估上下文  没有map通用
+        EvaluationContext evaluationContext = new StandardEvaluationContext();
+//        evaluationContext.setVariable("id", 1);  // "#id"
+        evaluationContext.setVariable("applyId", 1);
+        String template2 = "applyId:#{#applyId}";
+        String value3 = parser.parseExpression(template2, templateParserContext).getValue(evaluationContext, String.class);
         System.out.println(value3);
+
+        Map<String, Object> context = new HashMap<>(8);
+        root.put("id", 1);
+        String value4 = parser.parseExpression("#id + 1").getValue(context, String.class);
+        System.out.println(value4);
 
     }
 
