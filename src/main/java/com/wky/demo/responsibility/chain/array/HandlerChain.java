@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 处理器链持有了所有的处理器，并支持添加新的处理器
+ *
  * @author wangkunyang
  * @date 2023/04/06 15:41
  */

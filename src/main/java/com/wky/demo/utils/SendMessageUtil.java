@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class SendMessageUtil {
 
-    private static final String ROBOT_KEY = "11207b52-3172-40ed-9d4e-683a1573ccc6";
+    private static final String ROBOT_KEY = "";
 
     public Boolean sendMessage(String url, String message) {
 //        QiRobotVo vo = new QiRobotVo();

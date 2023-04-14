@@ -11,8 +11,6 @@ import javax.annotation.Resource;
 /**
  * 释放交易流水监听器
  *
- * @author: cg1
- * @date: 2021-10-29 13:32
  **/
 @Component
 @Slf4j

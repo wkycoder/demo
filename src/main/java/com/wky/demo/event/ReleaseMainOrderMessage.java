@@ -6,8 +6,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 /**
- * @author: cg1
- * @date: 2022-01-05 18:41
+ *
  **/
 @Data
 @AllArgsConstructor
