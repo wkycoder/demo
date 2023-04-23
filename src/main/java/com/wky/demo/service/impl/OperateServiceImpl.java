@@ -74,6 +74,23 @@ public class OperateServiceImpl implements OperateService {
 //        }
     }
 
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void add2(String username, BigDecimal amount) {
+        log.info("{}的账户+{}元", username, amount);
+        AccountEntity accountEntity = accountRepository.findByUsername(username);
+        BigDecimal balance = accountEntity.getBalance();
+        log.info("{}的账户余额：{}", username, balance);
+        accountEntity.setBalance(balance.add(amount));
+        log.info("加钱后：{}", accountEntity.getBalance());
+        accountRepository.saveAndFlush(accountEntity);
+        try {
+            int i = 1/0;
+        } catch (Exception e) {
+            log.error("add方法出现异常", e);
+        }
+    }
+
     /**
      * 测试事务提交后再次提交
      * @param accountEntity

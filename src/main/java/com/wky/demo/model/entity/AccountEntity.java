@@ -40,21 +40,24 @@ public class AccountEntity {
      */
     @Column(name = "created_at", columnDefinition = "datetime")
     private LocalDateTime createdAt;
+
     /**
      * 创建人
      */
     @Column(name = "created_by", columnDefinition = "int")
     private Integer createdBy;
+
     /**
      *
      * 更新时间
      */
-    @Column(name = "updated_at", columnDefinition = "datetime")
+    @Column(name = "last_updated_at", columnDefinition = "datetime")
     private LocalDateTime updatedAt;
+
     /**
      * 更新人
      */
-    @Column(name = "updated_by", columnDefinition = "int")
+    @Column(name = "last_updated_by", columnDefinition = "int")
     private Integer updatedBy;
 
 }

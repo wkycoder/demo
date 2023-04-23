@@ -26,6 +26,8 @@ public interface OperateService {
      */
     void add(String username, BigDecimal amount);
 
+    void add2(String username, BigDecimal amount);
+
     /**
      * 测试事务提交后再次提交事务
      * @param accountEntity

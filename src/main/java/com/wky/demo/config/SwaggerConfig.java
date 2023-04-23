@@ -35,7 +35,7 @@ public class SwaggerConfig {
                 .title("标题")
                 .description("描述信息")
                 .version("1.0")
-                .contact(new Contact("wky", "url", "wangkunyang@ruigushop.com"))
+                .contact(new Contact("wky", "url", "wky@163.com"))
                 .license("license")
                 .licenseUrl("license url")
                 .build();

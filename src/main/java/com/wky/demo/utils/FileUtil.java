@@ -1,6 +1,6 @@
 package com.wky.demo.utils;
 
-import com.ruigu.rbox.cloud.kanai.web.exception.GlobalRuntimeException;
+import com.wky.demo.exception.GlobalRuntimeException;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;

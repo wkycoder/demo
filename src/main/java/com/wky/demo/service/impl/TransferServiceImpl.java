@@ -45,7 +45,7 @@ public class TransferServiceImpl implements TransferService {
      * 如果方法B的事务传播行为是requires_new，此时方法B和方法A是两个不同的事务，方法B抛出异常被方法A捕获没抛出，（方法B回滚）
      * 但是并不会影响到方法A的事务，方法A会继续执行并顺利提交事务。[加钱失败，扣钱成功]
      * 一个方法内部抛出的异常被手动捕获而不做任何处理，这样就会导致spring的事务失效。
-     * 事务场景中，抛出异常被catch住，如果需要回滚，一定要手动回滚。
+     * 事务场景中，抛出异常被catch住，如果需要回滚，一定要手动回滚（或立即抛出该异常）。
      * @param transferReq
      */
     @Override
@@ -73,6 +73,19 @@ public class TransferServiceImpl implements TransferService {
             log.error("转账操作出现异常", e);
 //            throw new GlobalRuntimeException(500, "转账失败");
         }
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void transfer2(TransferReq transferReq) {
+        log.info("开始转账");
+        String source = transferReq.getFrom();
+        String target = transferReq.getTo();
+        BigDecimal amount = transferReq.getAmount();
+        // add2方法内部catch异常且不抛出，会导致事务失效，即该事务不会失效
+        operateService.add2(target, amount);
+        operateService.sub(source, amount);
+        log.info("转账操作执行完毕");
     }
 
     /**
@@ -153,9 +166,10 @@ public class TransferServiceImpl implements TransferService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void catchException() {
+        // catch住异常，但是并未抛出，此时导致事务失效，即事务不会回滚
         try{
             AccountEntity account = accountRepository.findByUsername("zhangsan");
-            account.setBalance(new BigDecimal(10000));
+            account.setBalance(new BigDecimal(100));
             accountRepository.save(account);
             int i = 1/0;
         } catch (Exception e) {

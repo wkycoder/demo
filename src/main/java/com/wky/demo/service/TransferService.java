@@ -16,6 +16,8 @@ public interface TransferService {
      */
     void transfer(TransferReq transferReq);
 
+    void transfer2(TransferReq transferReq);
+
 
     /**
      * 指定用户的账户减去指定的金额

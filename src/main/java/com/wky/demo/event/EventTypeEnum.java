@@ -32,27 +32,12 @@ public enum EventTypeEnum {
     USER_ENABLE,
 
     /**
-     * 用户预离职
-     */
-    USER_PRE_RESIGN,
-
-    /**
      * 用户角色发生变更
      */
     USER_ROLE_CHANGE,
     /**
      * 角色权限发生变更
      */
-    ROLE_PERMISSION_CHANGE,
-
-
-    /**
-     * 拜访小结发生变更
-     */
-    VISIT_SUMMARY_CHANGE,
-    /**
-     * 释放关联的主单数据
-     */
-    RELEASE_MAIN_ORDER,
+    ROLE_PERMISSION_CHANGE
 
 }

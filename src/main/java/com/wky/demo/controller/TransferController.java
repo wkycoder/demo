@@ -25,7 +25,8 @@ public class TransferController {
     @PostMapping("/transfer")
     public Result transfer(@RequestBody TransferReq transferReq) {
         // 转账操作：from-amount，to+amount
-        transferService.transfer(transferReq);
+//        transferService.transfer(transferReq);
+        transferService.transfer2(transferReq);
         return Result.ok("转账成功", null);
     }
 
