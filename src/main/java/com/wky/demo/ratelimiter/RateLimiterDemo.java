@@ -9,7 +9,9 @@ import com.google.common.util.concurrent.RateLimiter;
 public class RateLimiterDemo {
 
     public static void main(String[] args) {
+        //
         RateLimiter rateLimiter = RateLimiter.create(1);
+        // 尝试获取令牌
         boolean b = rateLimiter.tryAcquire();
 
 

@@ -36,12 +36,13 @@ public class ElUtil {
     }
 
     /**
-     * 获取上下文对象
+     * 构建上下文对象
+     *
      * @param keys
      * @param values
      * @return
      */
-    public static EvaluationContext getContext(List<String> keys, List<Object> values) {
+    public static EvaluationContext buildContext(List<String> keys, List<Object> values) {
         EvaluationContext context = new StandardEvaluationContext();
         if (CollectionUtils.isNotEmpty(keys)) {
             for (int i = 0; i < keys.size(); i++) {

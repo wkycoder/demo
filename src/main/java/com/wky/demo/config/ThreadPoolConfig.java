@@ -23,9 +23,8 @@ public class ThreadPoolConfig {
         executor.setAllowCoreThreadTimeOut(true);
         executor.setKeepAliveSeconds(600);
         executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
-        executor.setThreadNamePrefix("fill-task");
+        executor.setThreadNamePrefix("fill-task-");
         executor.setTaskDecorator(new FillerTaskDecorator());
-        executor.setTaskDecorator(r -> () -> {});
         return executor;
     }
 

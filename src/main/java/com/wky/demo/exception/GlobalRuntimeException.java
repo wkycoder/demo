@@ -9,13 +9,17 @@ import lombok.Data;
 @Data
 public class GlobalRuntimeException extends RuntimeException {
 
-    private Integer code;
-    private String msg;
+    private final Integer code;
+    private final String msg;
 
     public GlobalRuntimeException(int code, String message) {
         super(message);
         this.code = code;
         this.msg = message;
+    }
+
+    public GlobalRuntimeException(String message) {
+        this(500, message);
     }
 
 

@@ -16,7 +16,7 @@ public class GlobalExceptionHandler {
 
     @ResponseBody
     @ExceptionHandler({GlobalRuntimeException.class})
-    public Result handleException(GlobalRuntimeException e) {
+    public Result<?> handleException(GlobalRuntimeException e) {
         log.error("发生异常：{}", e.getMsg());
         return Result.error(e.getCode(), e.getMsg());
     }

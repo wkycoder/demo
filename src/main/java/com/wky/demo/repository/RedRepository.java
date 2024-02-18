@@ -40,4 +40,5 @@ public interface RedRepository extends JpaRepository<RedEntity, Integer> {
     @Transactional(rollbackFor = Exception.class)
     @Query("update RedEntity r set r.remainingAmount = ?1 where r.id = ?2")
     void updateRemainingAmountById(Integer remainingAmount, Integer id);
+
 }

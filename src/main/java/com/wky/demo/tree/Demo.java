@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * 多叉树遍历
+ * 多叉树递归遍历
  * @author wangkunyang
  * @date 2023/01/31 16:57
  */
