@@ -19,15 +19,15 @@ public class Application {
 
     public static void main(String[] args) {
         Node l1 = new Node(9);
-        l1.next = new Node(8);
+        l1.next = new Node(1);
         l1.next.next = new Node(7);
         l1.next.next.next = new Node(6);
 
         Node l2 = new Node(5);
-        l2.next = new Node(1);
-        l2.next.next = new Node(7);
+        l2.next = new Node(7);
+        l2.next.next = new Node(2);
 
-        Node l3 = sub(l1, l2);
+        Node l3 = subtract(l1, l2);
         printList(l3);
     }
 
@@ -38,65 +38,48 @@ public class Application {
         }
     }
 
-    private static Node sub(Node l1, Node l2) {
+    private static Node subtract(Node l1, Node l2) {
         // 首先需要将两个链表进行翻转
         l1 = reverseList(l1);
         l2 = reverseList(l2);
 
         // 定义一个新的链表，用于存储结果
-        Node head = null; Node tail = null;
+        Node dummy = new Node(-1); // 虚拟的头节点
+        Node curr = dummy;
         // 记录借位
-        int temp = 0;
+        int borrow = 0;
 
         while (l1 != null || l2 != null) {
-            int a = 0;
-            int b = 0;
-            if (l1 != null) {
-                a = l1.data;
-            }
-            if (l2 != null) {
-                b = l2.data;
-            }
-            // 相减
-            int result = a - temp - b;
-            if (result < 0) {
-                // 不够减，需要向前面借1
-                temp = 1;
-                result = 10 + result;
+            int a = (l1 != null) ? l1.data : 0;
+            int b = (l2 != null) ? l2.data : 0;
+            // 相减记录差值
+            int diff = a - b - borrow;
+            if (diff < 0) {
+                diff += 10;
+                borrow = 1;
             } else {
-                temp = 0;
+                borrow = 0;
             }
-            Node node = new Node(result);
-            if (head == null) {
-                head = tail  = node;
-            } else {
-                tail.next = node;
-                tail = node;
-            }
-            if (l1 != null) {
-                l1 = l1.next;
-            }
-            if (l2 != null) {
-                l2 = l2.next;
-            }
+
+            curr.next = new Node(diff);
+            curr = curr.next;
+
+            if (l1 != null) l1 = l1.next;
+            if (l2 != null) l2 = l2.next;
         }
-        return reverseList(head);
+        return reverseList(dummy.next);
     }
 
     private static Node reverseList(Node head) {
-        if (head == null || head.next == null) {
-            return head;
-        }
         // 双指针
-        Node current = head;
         Node prev = null;
-        Node temp;
+        Node curr = head;
 
-        while (current != null) {
-            temp = current.next;
-            current.next = prev;
-            prev = current;
-            current = temp;
+        while (curr != null) {
+            Node next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
         }
         return prev;
     }
