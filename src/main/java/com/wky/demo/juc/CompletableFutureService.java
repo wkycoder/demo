@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,6 +20,8 @@ import java.util.concurrent.*;
 @Slf4j
 @Service
 public class CompletableFutureService {
+
+    private final LinkedBlockingQueue<Request> requestsd = new LinkedBlockingQueue<>();
 
     private final Map<String, CompletableFuture<Boolean>> requests = new ConcurrentHashMap<>();
 
@@ -79,5 +80,23 @@ public class CompletableFutureService {
         return future.get();
     }
 
+    BlockingQueue<Request> queue = new LinkedBlockingQueue<>();
+
+
+    public static void main(String[] args) {
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
+        executorService.submit(new Callable<Object>() {
+            @Override
+            public Object call() throws Exception {
+                return null;
+            }
+        });
+    }
 
 }

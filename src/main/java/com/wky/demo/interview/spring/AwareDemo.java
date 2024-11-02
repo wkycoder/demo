@@ -1,6 +1,5 @@
 package com.wky.demo.interview.spring;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class AwareDemo {
 
-    @Autowired
+//    @Autowired
     private ApplicationContext applicationContext;
 
     

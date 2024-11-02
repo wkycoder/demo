@@ -20,6 +20,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+
 import javax.annotation.Resource;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -140,5 +141,45 @@ public class DemoController {
         }
         return Result.ok("测试成功", payResult);
     }
+
+
+//    @GetMapping(value = "/data")
+//    public Result<String> getData(@RequestParam("size") Integer size) {
+//        int sizeInBytes = size * 1024; // 将 KB 转换为字节数
+//        StringBuilder sb = new StringBuilder();
+//        for (int i = 0; i < sizeInBytes; i++) {
+//            sb.append("A"); // 将字节数组填充为字符串 "A"
+//        }
+//        return Result.ok("测试成功", sb.toString());
+//    }
+
+//    @GetMapping(value = "/data")
+//    @JsonRawValue
+//    public Result<byte[]> getData(@RequestParam("size") Integer size) {
+//        int sizeInBytes = size * 1024; // 将 KB 转换为字节数
+//        return Result.ok("测试成功", new byte[sizeInBytes]);
+//    }
+
+    @GetMapping(value = "/data")
+    public Result<char[]> getData(@RequestParam("size") Integer size) {
+        return Result.ok("测试成功", new char[size]);
+    }
+
+//    @GetMapping(value = "/data")
+//    public ResponseEntity<byte[]> getData(@RequestParam("size") Integer size) {
+//        int sizeInBytes = size * 1024; // 将 KB 转换为字节数
+//        byte[] data = new byte[sizeInBytes];
+//
+//        // 手动设置响应的 Content-Length 头
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.setContentLength(data.length);
+//
+//        // 返回 ResponseEntity 并设置响应头
+//        return ResponseEntity.ok()
+//                .headers(headers)
+//                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+//                .body(data);
+//    }
+
 
 }

@@ -7,7 +7,9 @@ import java.util.Map;
 
 /**
  * 策略工厂类：负责创建策略对象
- * @author: wangkunyang
+ * 等价于context
+ *
+ * @author wangkunyang
  * @date 2021/11/08 15:39
  */
 public class StrategyFactory {

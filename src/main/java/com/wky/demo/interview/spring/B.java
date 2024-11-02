@@ -1,6 +1,5 @@
 package com.wky.demo.interview.spring;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class B {
 
-    @Autowired
+//    @Autowired
     private A a;
 
 

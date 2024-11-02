@@ -1,5 +1,6 @@
 package com.wky.demo.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.wky.demo.model.entity.AccountEntity;
 import com.wky.demo.model.entity.SendRecordEntity;
 import com.wky.demo.model.req.TransferReq;
@@ -175,6 +176,10 @@ public class TransferServiceImpl implements TransferService {
         } catch (Exception e) {
             log.info("产生异常", e);
         }
+    }
+
+    public void testPage() {
+        PageHelper.startPage(1, 10);
     }
 
 }
